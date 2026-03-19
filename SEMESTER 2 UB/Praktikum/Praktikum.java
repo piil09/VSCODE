@@ -179,13 +179,39 @@ public class Praktikum {
 
         perpustakaan.display();
 
-        System.out.println("=== PENGUJIAN FITUR BARU ===");
-        
+        System.out.println("=== PENGUJIAN FITUR LAMA ===");
+
         Book buku1Copy = buku1.copy();
-        
+
         System.out.println("Jumlah kata sinopsis buku1: " + buku1.hitungKataSinopsis() + " kata");
-        
+
         System.out.println("Kesamaan buku1 dengan buku1Copy: " + buku1.cekTingkatKesamaan(buku1Copy) + "%");
         System.out.println("Kesamaan buku1 dengan buku2: " + buku1.cekTingkatKesamaan(buku2) + "%");
+
+       
+        System.out.println("\n=== PENGUJIAN METHOD BARU ===");
+
+        System.out.println("\n-- simpanFile --");
+        buku1.simpanFile("buku1.txt");
+
+        System.out.println("\n-- bacaFile --");
+        Book bukuDariFile = new Book("(belum diisi)", teknologi, sinopsisUmum);
+        bukuDariFile.bacaFile("buku1.txt");
+
+        System.out.println("\n-- hitungRoyalti (1 parameter) --");
+        buku1.setJumlahTerjual(150); 
+        double hargaBuku = 85000;
+        double royalti10Persen = buku1.hitungRoyalti(hargaBuku);
+        System.out.printf("Judul       : %s%n", buku1.getJudul());
+        System.out.printf("Harga       : Rp %.0f%n", hargaBuku);
+        System.out.printf("Terjual     : %d buku%n", buku1.getJumlahTerjual());
+        System.out.printf("Royalti 10%% : Rp %.2f%n", royalti10Persen);
+
+        System.out.println("\n-- hitungRoyalti (2 parameter) --");
+        double royalti15Persen = buku1.hitungRoyalti(hargaBuku, 15);
+        System.out.printf("Judul        : %s%n", buku1.getJudul());
+        System.out.printf("Harga        : Rp %.0f%n", hargaBuku);
+        System.out.printf("Terjual      : %d buku%n", buku1.getJumlahTerjual());
+        System.out.printf("Royalti 15%% : Rp %.2f%n", royalti15Persen);
     }
 }
